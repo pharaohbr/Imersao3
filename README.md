@@ -1,12 +1,12 @@
-# Imersao Azure Expert Online - Turma 3
+# Imersao Azure Expert 3.0  - edição São Paulo
 
-Este é o repositório que contém os materiais de apoio da Imersão
+Este é o repositório que contém os materiais de apoio do Workshop Day
 
-Para realizar as atividades do Hands-on estamos utilizando o Portal do Azure no idioma Inglês a fim de manter o padrão e não haver erros, e se necessário você pode abrir o [Google Tradutor](https://translate.google.com.br/) e traduzir caso tenha alguma dificuldade no entendimento.
+Para realizar as atividades do Hands-on Lab estamos utilizando o Portal do Azure no idioma Inglês a fim de manter o padrão e não haver erros, e se necessário caso tenha alguma dificuldade no entendimento você pode abrir o [Google Tradutor](https://translate.google.com.br/) e traduzir para melhor entendimento.
 
 ### Hands-on Lab
 ## Day 1
-## Exercise #01 - Azure Calculator (15 minutes)
+## Lab #01 - Azure Calculator (15 minutes)
 
 1. In a browser, navigate to the [Azure Pricing Calculator](https://azure.microsoft.com/en-us/pricing/calculator/) webpage.
 
