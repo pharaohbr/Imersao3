@@ -6,7 +6,7 @@ Para realizar as atividades do Hands-on Lab estamos utilizando o Portal do Azure
 
 ### Hands-on Lab
 ## Day 1
-## Lab #01 - Azure Calculator (15 minutes)
+## Lab #00 - Azure Calculator (15 minutes)
 
 1. In a browser, navigate to the [Azure Pricing Calculator](https://azure.microsoft.com/en-us/pricing/calculator/) webpage.
 
