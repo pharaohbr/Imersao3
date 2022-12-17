@@ -264,106 +264,7 @@ Para realizar as atividades do Hands-on Lab estamos utilizando o Portal do Azure
 
 1. Examine the navegate was successful.
 
-## Lab #06 - Azure Storage Blobs (20 minutes)
-
-1. In the Azure portal, search for and select **Storage accounts** and, on the **Storage accounts** blade, select **+ Create**.
-
-1. On the **Basics** tab of the **Create storage account** blade, specify the following settings (leave others with their default values):
-
-    | Setting | Value | 
-    | --- | --- |
-    | Subscription | the name of the Azure subscription you are using in this lab |
-    | Resource group | the name of a new resource group **RG-IAE-Storage** |
-    | Storage account name | any globally unique name between 3 and 24 in length consisting of letters and digits **saiaeblob###** |
-    | Location | the name of an Azure region where you can create an Azure Storage account  |
-    | Performance | **Standard** |
-    | Account kind | **StorageV2 (general purpose v2)** |
-    | Replication | **Locally redundant storage (LRS)** |
-
-1. Select **Next: Networking >**, on the **Networking** tab of the **Create storage account** blade, review the available options, accept the default option **Public endpoint (all networks}** and select **Next: Data protection >**.
-
-1. On the **Data protection** tab of the **Create storage account** blade, review the available options, accept the defaults, select **Next: Advanced >**.
-
-1. On the **Advanced** tab of the **Create storage account** blade, review the available options, accept the defaults, select **Review + Create**, wait for the validation process to complete and select **Create**.
-
-1. On the Storage account blade, in the Blob service section, click Containers.
-
-1. Select **Create Blob Container**, and use the empty text box to set the container name to **azureexpert**.
-
-1. Select **azureexpert**, in the **azureexpert** pane, select **Upload**, and in the drop-down list, select **Upload Files**.
-
-1. In the **Upload Files** window, select the ellipsis button next to the **Selected files** label, in the **Choose files to upload** window, select **files** select random files your computer, and select **Open**.
-
-1. Back in the **Upload Files** window, select **Upload**
-
-1. Within the Remote Desktop session to **Virtual machine**, in the Server Manager window, select **Local Server**, select the **On** link next to the **IE Enhanced Security Configuration** label, and, in the **IE Enhanced Security Configuration** dialog box, select both **Off** options.
-
-1. Within the Remote Desktop session, start Browser and navigate to the download page of [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/)
-
-1. Within the Remote Desktop session, download and install Azure Storage Explorer with the default settings. 
-
-1. Navigate to the [Azure portal](https://portal.azure.com), and sign-in by providing credentials of the user account with the Owner role in the subscription you are using in this lab.
-
-1. Navigate to the blade of the newly created storage account, select **Access keys** and review the settings of the target blade.
-
-1. On the storage account blade, select **Shared access signature** and review the settings of the target blade.
-
-1. On the resulting blade, specify the following settings (leave others with their default values):
-
-    | Setting | Value | 
-    | --- | --- |
-    | Allowed services | **Blob** |
-    | Allowed resource types | **Service**, **Container** and **Object** |
-    | Allowed permissions | **Read**, **List** |
-    | Blob versioning permissions | disabled |
-    | Start | 24 hours before the current time in your current time zone | 
-    | End | 24 hours after the current time in your current time zone |
-    | Allowed protocols | **HTTPS only** |
-    | Signing key | **key1** |
-
-1. Select **Generate SAS and connection string**.
-
-1. Copy the value of **Blob service SAS URL** into Clipboard.
-
-1. Within the Remote Desktop session, start Azure Storage Explorer. 
-
-1. In the Azure Storage Explorer window, in the **Connect to Azure Storage** window, select **Use a shared access signature (SAS) URI** and select **Next**.
-
-1. In the **Attach with SAS URI** window, in the **Display name** text box, type **saIAEblob###**, in the **URI** text box, paste the value you copied into Clipboard, and select **Next**. 
-
-    >**Note**: This should automatically populate the value of **Blob endpoint** text box.
-
-1. In the **Connection Summary** window, select **Connect**. 
-
-1. Select **Storage account** and "Blob containers", Open and download uploaded files
-
-1. Leave the Azure Storage Explorer window open.
-
-## Lab #07 - Azure Files (15 minutes)
-
-1. In the Azure portal, search for and select **Storage accounts** and, on the **Storage accounts** blade and create a new Storage account **saIAEfiles**, in the **File service** section, click **File shares**.
-
-1. Click **+ File share** and create a file share with the following settings:
-
-    | Setting | Value |
-    | --- | --- |
-    | Name | **fs-azureexpert** |
-    | Quota | **1024** |
-    | Tiers | hot |
-
-1. Click the newly created file share and click **Connect**.
-
-1. On the **Connect** blade, ensure that the **Windows** tab is selected, and click **Copy to clipboard**.
-
-1. In the Azure portal, search for and select **Virtual machines**, and, in the list of virtual machines.
-
-1. In the Virtual Machine Connection window, start Windows PowerShell and, in the **Administrator: Windows PowerShell** window run the following to set map share. 
-
-1. Verify that the script completed successfully. 
-
-1. Connect share and upload files.
-
-## Lab #08 - Azure VNET Peering (30 minutes)
+## Lab #06 - Azure VNET Peering (30 minutes)
 
 1. In the Azure portal, search for and select **Virtual networks**, and, on the **Virtual networks** blade, click **+ Createt**.
 
@@ -439,7 +340,7 @@ Para realizar as atividades do Hands-on Lab estamos utilizando o Portal do Azure
    ```
 1. Examine the output of the command and verify that the connection was successful.
 
-## Project #01 - Hub-spoke Archicture (60 minutes)
+## Project - Hub-spoke Archicture (45 minutes)
 
 Implement a Hub-spoke Network topology
 
@@ -799,7 +700,106 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
     > **Note**: You might need to wait a few minutes.
 
-## Lab #03 - Azure App Service (30 minutes)
+## Lab #06 - Azure Storage Blobs (20 minutes)
+
+1. In the Azure portal, search for and select **Storage accounts** and, on the **Storage accounts** blade, select **+ Create**.
+
+1. On the **Basics** tab of the **Create storage account** blade, specify the following settings (leave others with their default values):
+
+    | Setting | Value | 
+    | --- | --- |
+    | Subscription | the name of the Azure subscription you are using in this lab |
+    | Resource group | the name of a new resource group **RG-IAE-Storage** |
+    | Storage account name | any globally unique name between 3 and 24 in length consisting of letters and digits **saiaeblob###** |
+    | Location | the name of an Azure region where you can create an Azure Storage account  |
+    | Performance | **Standard** |
+    | Account kind | **StorageV2 (general purpose v2)** |
+    | Replication | **Locally redundant storage (LRS)** |
+
+1. Select **Next: Networking >**, on the **Networking** tab of the **Create storage account** blade, review the available options, accept the default option **Public endpoint (all networks}** and select **Next: Data protection >**.
+
+1. On the **Data protection** tab of the **Create storage account** blade, review the available options, accept the defaults, select **Next: Advanced >**.
+
+1. On the **Advanced** tab of the **Create storage account** blade, review the available options, accept the defaults, select **Review + Create**, wait for the validation process to complete and select **Create**.
+
+1. On the Storage account blade, in the Blob service section, click Containers.
+
+1. Select **Create Blob Container**, and use the empty text box to set the container name to **azureexpert**.
+
+1. Select **azureexpert**, in the **azureexpert** pane, select **Upload**, and in the drop-down list, select **Upload Files**.
+
+1. In the **Upload Files** window, select the ellipsis button next to the **Selected files** label, in the **Choose files to upload** window, select **files** select random files your computer, and select **Open**.
+
+1. Back in the **Upload Files** window, select **Upload**
+
+1. Within the Remote Desktop session to **Virtual machine**, in the Server Manager window, select **Local Server**, select the **On** link next to the **IE Enhanced Security Configuration** label, and, in the **IE Enhanced Security Configuration** dialog box, select both **Off** options.
+
+1. Within the Remote Desktop session, start Browser and navigate to the download page of [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/)
+
+1. Within the Remote Desktop session, download and install Azure Storage Explorer with the default settings. 
+
+1. Navigate to the [Azure portal](https://portal.azure.com), and sign-in by providing credentials of the user account with the Owner role in the subscription you are using in this lab.
+
+1. Navigate to the blade of the newly created storage account, select **Access keys** and review the settings of the target blade.
+
+1. On the storage account blade, select **Shared access signature** and review the settings of the target blade.
+
+1. On the resulting blade, specify the following settings (leave others with their default values):
+
+    | Setting | Value | 
+    | --- | --- |
+    | Allowed services | **Blob** |
+    | Allowed resource types | **Service**, **Container** and **Object** |
+    | Allowed permissions | **Read**, **List** |
+    | Blob versioning permissions | disabled |
+    | Start | 24 hours before the current time in your current time zone | 
+    | End | 24 hours after the current time in your current time zone |
+    | Allowed protocols | **HTTPS only** |
+    | Signing key | **key1** |
+
+1. Select **Generate SAS and connection string**.
+
+1. Copy the value of **Blob service SAS URL** into Clipboard.
+
+1. Within the Remote Desktop session, start Azure Storage Explorer. 
+
+1. In the Azure Storage Explorer window, in the **Connect to Azure Storage** window, select **Use a shared access signature (SAS) URI** and select **Next**.
+
+1. In the **Attach with SAS URI** window, in the **Display name** text box, type **saIAEblob###**, in the **URI** text box, paste the value you copied into Clipboard, and select **Next**. 
+
+    >**Note**: This should automatically populate the value of **Blob endpoint** text box.
+
+1. In the **Connection Summary** window, select **Connect**. 
+
+1. Select **Storage account** and "Blob containers", Open and download uploaded files
+
+1. Leave the Azure Storage Explorer window open.
+
+## Lab #07 - Azure Files (15 minutes)
+
+1. In the Azure portal, search for and select **Storage accounts** and, on the **Storage accounts** blade and create a new Storage account **saIAEfiles**, in the **File service** section, click **File shares**.
+
+1. Click **+ File share** and create a file share with the following settings:
+
+    | Setting | Value |
+    | --- | --- |
+    | Name | **fs-azureexpert** |
+    | Quota | **1024** |
+    | Tiers | hot |
+
+1. Click the newly created file share and click **Connect**.
+
+1. On the **Connect** blade, ensure that the **Windows** tab is selected, and click **Copy to clipboard**.
+
+1. In the Azure portal, search for and select **Virtual machines**, and, in the list of virtual machines.
+
+1. In the Virtual Machine Connection window, start Windows PowerShell and, in the **Administrator: Windows PowerShell** window run the following to set map share. 
+
+1. Verify that the script completed successfully. 
+
+1. Connect share and upload files.s
+
+## Lab #04 - Azure App Service (30 minutes)
 
 1. Sign in to the [**Azure portal**](http://portal.azure.com).
 
