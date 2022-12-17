@@ -1436,6 +1436,8 @@ Kubernetes architecture.
     ```
 1. Close the **Cloud Shell** pane.
 
+1. Delete all Azure resources created in support of this Hands-on lab.
+
 1. End of day 2 and **Imersao Azure Azure Expert**.
 
 1. Continue in the **Mentoria Arquiteto Cloud**.
