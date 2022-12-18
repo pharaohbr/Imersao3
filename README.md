@@ -514,7 +514,7 @@ Test open Browser to IP Address the Virtual machines.
 
 1. On the **NSG-ALB-WEB** network security group blade, in the **Settings** section, click **Network interfaces** and then click **+ Associate**.
 
-1. Associate the **NSG-ALB-WEB** network security group with the Network interfaces **VMIAEWEB01 and VMIAEWEB02**.
+1. Associate the **NSG-ALB-WEB** network security group with the Network interfaces **VMWEB01 and VMWEB02**.
 
     >**Note**: It may take up to 5 minutes for the rules from the newly created Network Security Group to be applied to the Network Interface Card.
 
