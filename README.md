@@ -373,16 +373,16 @@ References: [Hub-spoke network topology](https://docs.microsoft.com/en-us/azure/
     | --- | --- |
     | Subscription | the name of the Azure subscription you will be using in this lab |
     | Resource group | the name of a new resource group **RG-IAE-HA** |
-    | Virtual machine name | **VMIAEWEB01** and **VMIAEWEB02** |
+    | Virtual machine name | **VMWEB01** and **VMWEB02** |
     | Region | select one of the regions that support availability zones and where you can provision Azure virtual machines | 
     | Availability options | **Availability zone** |
-    | Availability zone | **1** and **2** |
-    | Image | **Ubuntu Server 18.04 LTS - Gen1** |
+    | Availability zone | **1** and **2** or **3** |
+    | Image | **Windows Server 2019** |
     | Azure Spot instance | **No** |
     | Size | **Standard B1ms** |
-    | Authentication type | **SSH public key** |
-    | Username | **azureuser** |
-    | Public inbound ports | **SSH (22)** |
+    | Username | **admaz** |
+    | Password | **Azur3Expert!**   
+    | Public inbound ports | **RDP (3389)** |
     | Would you like to use an existing Windows Server license? | **No** |
 
 1. Click **Next: Disks >** and, on the **Disks** tab of the **Create a virtual machine** blade, specify the following settings (leave others with their default values):
@@ -398,29 +398,16 @@ References: [Hub-spoke network topology](https://docs.microsoft.com/en-us/azure/
     | --- | --- |
     | Virtual Network | the name of a virtual network **VNET-IAE-Hub** |
     | Subnet | **Default** |
-    | Public IP | **VMIAEWEB01-PI** and **VMIAEWEB02 (None)** |
+    | Public IP | **VMWEB01-PI** and **VMWEB02 (None)** |
     | NIC network security group | **None** |
     | Accelerated networking | **Off** |
     | Place this virtual machine behind an existing load balancing solution? | **No** |
-
-1. Click **Next: Management >** and, on the **Management** tab of the **Create a virtual machine** blade, specify the following settings (leave others with their default values):
-
-    | Setting | Value | 
-    | --- | --- |
-    | Boot diagnostics | **Enable with custom storage account** |
-    | Diagnostics storage account | create new |
-    | Properties storage account | Name: **saiaediag####**, Account kind: StorageV2, Performance: Standard, Replication: Locally-redundant-storage (LRS) |
-    | Enable auto-shutdown | off |   
-
-1. Click **Next: Advanced >**, on the **Advanced** tab of the **Custom data and cloud init** blade, add script for install NGINX Web Server.
-
-1. Copy and paste script, on the Create cloud-init config, [click here](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/tutorial-load-balancer#create-virtual-machines)
 
 1. Click **Review + Create**.
 
 1. On the **Review + Create** blade, click **Create**.
 
-1. Repeat a new Virtual Machine **VMIAEWEB02**
+1. Repeat a new Virtual Machine **VMWEB02**
 
 1. Check two Virtual machines create successful.
 
@@ -437,12 +424,12 @@ Test open Browser to IP Address the Virtual machines.
     | --- | --- |
     | Subscription | the name of the Azure subscription you are using in this lab |
     | Resource group | **RG-IAE-HA** |
-    | Name | **ALBIAEWEB** |
+    | Name | **ALBWEB** |
     | Region| name of the Azure region into which you deployed all other resources in this lab |
     | Type | **Public** |
     | SKU | **Standard** |
     | Public IP address | **Create new** |
-    | Public IP address name | **ALBIAEWEB-PI** |
+    | Public IP address name | **ALBWEB-PI** |
     | Availability zone | **Zone-redundant** |
     | Add a public IPv6 address | **No** |
 
@@ -459,9 +446,9 @@ Test open Browser to IP Address the Virtual machines.
     | Name | **BP-WEB** |
     | Virtual network | **VNET-IAE-Hub** |
     | IP version | **IPv4** |
-    | Virtual machine | **VMIAEWEB01** | 
+    | Virtual machine | **VMWEB01** | 
     | Virtual machine IP address | associate IP address |
-    | Virtual machine | **VMIAEWEB02** |
+    | Virtual machine | **VMWEB02** |
     | Virtual machine IP address | associate IP address |
 
 1. Wait for the backend pool to be created, click **Health probes**, and then click **+ Add**.
@@ -505,12 +492,12 @@ Test open Browser to IP Address the Virtual machines.
     | --- | --- |
     | Subscription | the name of the Azure subscription you are using in this lab |
     | Resource Group | **RG-IAE-Network** |
-    | Name | **NSG-IAE-ALB-WEB** |
+    | Name | **NSG-ALB-WEB** |
     | Region | the name of the Azure region where you deployed all other resources in this lab |
 
 1. On the deployment blade, click **Go to resource** to open the **NSG-ALB-WEB** network security group blade. 
 
-1. On the **NSG-IAE-ALB-WEB** network security group blade, in the **Settings** section, click **Inbound security rules**. 
+1. On the **NSG-ALB-WEB** network security group blade, in the **Settings** section, click **Inbound security rules**. 
 
 1. Add an inbound rule with the following settings (leave others with their default values):
 
@@ -527,7 +514,7 @@ Test open Browser to IP Address the Virtual machines.
 
 1. On the **NSG-ALB-WEB** network security group blade, in the **Settings** section, click **Network interfaces** and then click **+ Associate**.
 
-1. Associate the **NSG-IAE-ALB-WEB** network security group with the Network interfaces **VMIAEWEB01 and VMIAEWEB02**.
+1. Associate the **NSG-ALB-WEB** network security group with the Network interfaces **VMIAEWEB01 and VMIAEWEB02**.
 
     >**Note**: It may take up to 5 minutes for the rules from the newly created Network Security Group to be applied to the Network Interface Card.
 
@@ -535,7 +522,17 @@ Test open Browser to IP Address the Virtual machines.
 
 1. Select the name of your Network security group.
 
-1. Start browser window and navigate to the IP address you identified in the previous step.
+1. Connect the Virtual machines.
+
+1. Install the Web-Server feature in the virtual machine by running the following command in the **Administrator Windows PowerShell** command prompt. You can copy and paste this command.
+
+   ```powershell
+   Install-WindowsFeature -name Web-Server -IncludeManagementTools
+   Remove-item  C:\inetpub\wwwroot\iisstart.htm
+   Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Azure Expert - Web Server is running " + $env:computername)
+   ```
+
+1. Test open Browser to IP Address the Virtual machines.
 
 1. Verify that the browser window displays the message **Static page and servername**.
 
